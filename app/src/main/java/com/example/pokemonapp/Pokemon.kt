@@ -3,6 +3,7 @@ package com.example.pokemonapp
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
+import java.util.*
 
 
 @Serializable
@@ -39,7 +40,9 @@ data class Pokemon (
     val sprites: Sprites,
     val stats: List<Stat>,
     val types: List<Type>,
-    val weight: Long
+    val weight: Long,
+    var vidaMax: Int,
+    var vidaResto: Int
 ) {
     fun nameCapitalized() = "${name[0].uppercase()}${name.drop(1)}"
 
@@ -70,6 +73,11 @@ data class Pokemon (
         return result
     }
 
+    fun iniciarVida() {
+        vidaMax = Random().nextInt(150..251)
+        vidaResto = Random().nextInt(1..vidaMax)
+    }
+
     fun obtenerImagenTipo1(): Int? {
         if (types.isEmpty()) return null
         return getResource(types[0].type.name)
@@ -87,7 +95,7 @@ data class Pokemon (
             type.contentEquals("flying") -> R.mipmap.ic_volador
             type.contentEquals("poison") -> R.mipmap.ic_veneno
             type.contentEquals("ground") -> R.mipmap.ic_tierra
-            type.contentEquals("rock") -> R.mipmap.ic_piedra
+            type.contentEquals("rock") -> R.mipmap.ic_roca
             type.contentEquals("bug") -> R.mipmap.ic_bicho
             type.contentEquals("ghost") -> R.mipmap.ic_fantasma
             type.contentEquals("steel") -> R.mipmap.ic_acero
@@ -98,10 +106,9 @@ data class Pokemon (
             type.contentEquals("psychic") -> R.mipmap.ic_psiquico
             type.contentEquals("ice") -> R.mipmap.ic_hielo
             type.contentEquals("dragon") -> R.mipmap.ic_dragon
-            type.contentEquals("dark") -> R.mipmap.ic_oscuro
             type.contentEquals("fairy") -> R.mipmap.ic_hada
+            type.contentEquals("shadow") -> R.mipmap.ic_siniestro
             type.contentEquals("unknown") -> R.mipmap.ic_desconocido
-            type.contentEquals("shadow") -> R.mipmap.ic_sombra
 
             else -> R.mipmap.ic_desconocido
 

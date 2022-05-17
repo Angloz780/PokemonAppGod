@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.pokemonapp.databinding.ActivityPokemonBinding
+import com.squareup.picasso.Picasso
 
 class PokemonActivity : AppCompatActivity() {
 
@@ -29,6 +30,11 @@ class PokemonActivity : AppCompatActivity() {
         if (pokemonJson != null) {
             val pokemon = Pokemon.fromJson(pokemonJson)
             binding.tvPokemonNombre.text = pokemon.nameCapitalized()
+            Picasso.get().load(pokemon.sprites.frontDefault).into(binding.ivPokemon)
+            pokemon.obtenerImagenTipo1()?.let { Picasso.get().load(it).into(binding.ivTipo1) }
+            pokemon.obtenerImagenTipo2()?.let { Picasso.get().load(it).into(binding.ivTipo2) }
+            binding.tvPokemonAltura.text = "${pokemon.height} kg"
+            binding.tvPokemonPeso.text = "${pokemon.weight.toString()} metros"
         } else {
             Toast.makeText(this, "No se ha recibido ningún Pokémon", Toast.LENGTH_LONG).show()
             finish()

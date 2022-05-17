@@ -20,6 +20,7 @@
             tools:src="@tools:sample/avatars"
             android:contentDescription="@string/pokemon_picture" />
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -34,6 +35,16 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:gravity="center_vertical" />
+
+            <ProgressBar
+                android:id="@+id/vida"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:progressDrawable="@color/green"
+                />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
@@ -41,13 +52,13 @@
                 android:orientation="horizontal">
                 <ImageView
                     android:id="@+id/iv_tipo1"
-                    android:layout_width="20dp"
+                    android:layout_width="80dp"
                     android:layout_height="20dp"
                     android:src="@mipmap/ic_recarga"
                     android:layout_marginEnd="15dp"/>
                 <ImageView
                     android:id="@+id/iv_tipo2"
-                    android:layout_width="20dp"
+                    android:layout_width="80dp"
                     android:layout_height="20dp"
                     android:src="@mipmap/ic_recarga"
                     android:layout_marginEnd="15dp"/>
