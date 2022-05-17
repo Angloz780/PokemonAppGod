@@ -41,8 +41,8 @@ data class Pokemon (
     val stats: List<Stat>,
     val types: List<Type>,
     val weight: Long,
-    var vidaMax: Int,
-    var vidaResto: Int
+    var vidaMax: Int = 200,
+    var vidaResto: Int = 100
 ) {
     fun nameCapitalized() = "${name[0].uppercase()}${name.drop(1)}"
 
@@ -72,12 +72,11 @@ data class Pokemon (
         result+="\n"
         return result
     }
-
-    /*
+    
     fun iniciarVida() {
-        vidaMax = Random().nextInt(150..251)
-        vidaResto = Random().nextInt(1..vidaMax)
-    }*/
+        vidaMax = Random().nextInt(200)
+        vidaResto = Random().nextInt(vidaMax)
+    }
 
     fun obtenerImagenTipo1(): Int? {
         if (types.isEmpty()) return null
