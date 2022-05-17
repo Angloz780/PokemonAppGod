@@ -73,10 +73,11 @@ data class Pokemon (
         return result
     }
 
+    /*
     fun iniciarVida() {
         vidaMax = Random().nextInt(150..251)
         vidaResto = Random().nextInt(1..vidaMax)
-    }
+    }*/
 
     fun obtenerImagenTipo1(): Int? {
         if (types.isEmpty()) return null
