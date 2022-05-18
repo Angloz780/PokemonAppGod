@@ -3,8 +3,6 @@ package com.example.pokemonapp
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
-import java.util.*
-
 
 @Serializable
 data class Pokemon (
@@ -42,7 +40,7 @@ data class Pokemon (
     val types: List<Type>,
     val weight: Long,
     var vidaMax: Int = 200,
-    var vidaResto: Int = 100
+    var vidaActual: Int = 100
 ) {
     fun nameCapitalized() = "${name[0].uppercase()}${name.drop(1)}"
 
@@ -57,7 +55,6 @@ data class Pokemon (
             return gson.fromJson(json, Pokemon::class.java)
         }
     }
-
 
     fun toJson() : String {
         val gson = Gson()
@@ -74,8 +71,8 @@ data class Pokemon (
     }
     
     fun iniciarVida() {
-        vidaMax = Random().nextInt(200)
-        vidaResto = Random().nextInt(vidaMax)
+        vidaMax = (150..200).random()
+        vidaActual = (200..vidaMax).random()
     }
 
     fun obtenerImagenTipo1(): Int? {
@@ -107,11 +104,10 @@ data class Pokemon (
             type.contentEquals("ice") -> R.mipmap.ic_hielo
             type.contentEquals("dragon") -> R.mipmap.ic_dragon
             type.contentEquals("fairy") -> R.mipmap.ic_hada
-            type.contentEquals("shadow") -> R.mipmap.ic_siniestro
+            type.contentEquals("dark") -> R.mipmap.ic_siniestro
             type.contentEquals("unknown") -> R.mipmap.ic_desconocido
 
             else -> R.mipmap.ic_desconocido
-
         }
     }
 }

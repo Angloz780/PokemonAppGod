@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
     tools:context=".PokemonActivity">
 
     <ImageView
         android:id="@+id/ivPokemon"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:contentDescription="@string/pokemon_picture"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.318"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp"
         tools:src="@tools:sample/avatars" />
 
     <ImageView
@@ -22,7 +25,11 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
         android:contentDescription="@string/pokemon_picture"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPokemon"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.282"
         app:layout_constraintStart_toEndOf="@+id/ivPokemon"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
@@ -32,6 +39,8 @@
         android:layout_width="100dp"
         android:layout_height="30dp"
 
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.282"
         app:layout_constraintStart_toEndOf="@+id/ivPokemon"
         app:layout_constraintTop_toBottomOf="@+id/ivTipo1"
         tools:src="@tools:sample/avatars" />
@@ -40,8 +49,10 @@
         android:id="@+id/tvPokemonNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/white"
         android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.332"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivPokemon"
         tools:text="Nombre pokemon" />
@@ -50,8 +61,10 @@
         android:id="@+id/tvPokemonAltura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/white"
         android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.338"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPokemonNombre"
         tools:text="Altura pokemon" />
@@ -60,23 +73,24 @@
         android:id="@+id/tvPokemonPeso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/white"
         android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPokemonAltura"
         tools:text="Peso pokemon" />
 
     <ProgressBar
-        android:id="@+id/vida"
+        android:id="@+id/vida2"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="163dp"
-        android:layout_height="wrap_content"
+        android:layout_height="10dp"
         android:progressDrawable="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/ivTipo1"
-        app:layout_constraintStart_toEndOf="@+id/ivPokemon" />
+        app:layout_constraintBottom_toTopOf="@+id/ivPokemon"
 
-
-
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.334"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,7 @@ class PokemonActivity : AppCompatActivity() {
             pokemon.obtenerImagenTipo1()?.let { Picasso.get().load(it).into(binding.ivTipo1) }
             pokemon.obtenerImagenTipo2()?.let { Picasso.get().load(it).into(binding.ivTipo2) }
             binding.tvPokemonAltura.text = "${pokemon.height} kg"
-            binding.tvPokemonPeso.text = "${pokemon.weight.toString()} metros"
+            binding.tvPokemonPeso.text = "${pokemon.weight.toString()} cm"
         } else {
             Toast.makeText(this, "No se ha recibido ningún Pokémon", Toast.LENGTH_LONG).show()
             finish()

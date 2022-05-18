@@ -39,8 +39,8 @@
             <ProgressBar
                 android:id="@+id/vida"
                 style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="163dp"
-                android:layout_height="wrap_content"
+                android:layout_width="173dp"
+                android:layout_height="10dp"
                 android:layout_marginBottom="8dp"
                 android:progressDrawable="@color/green"
                 android:progressBackgroundTint="@color/purple_500"

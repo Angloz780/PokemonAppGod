@@ -1,14 +1,11 @@
 package com.example.pokemonapp
 
-import android.content.Context
-import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemonapp.databinding.ItemPokemonBinding
-import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
 class AdapterPokemon : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() {
@@ -26,7 +23,18 @@ class AdapterPokemon : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() 
         val pokemon = pokemons.listaPokemon[position]
         holder.pokemonBinding.tvPokemon.text = pokemon.nameCapitalized()
         holder.pokemonBinding.vida.max = pokemon.vidaMax
-        holder.pokemonBinding.vida.progress = pokemon.vidaResto
+        holder.pokemonBinding.vida.progress = pokemon.vidaActual
+        holder.pokemonBinding.vida.apply {
+            max = pokemon.vidaMax
+            progress = pokemon.vidaActual
+            progressTintList = ColorStateList.valueOf(
+                when{
+                    pokemon.vidaActual < pokemon.vidaMax * 0.15 -> Color.RED
+                    pokemon.vidaActual < pokemon.vidaMax * 0.5 -> Color.YELLOW
+                    else -> Color.GREEN
+                }
+            )
+        }
         Picasso.get().load(pokemon.sprites.frontDefault).into(holder.pokemonBinding.ivPokemon)
         val image1 = pokemon.obtenerImagenTipo1()
         if (image1 != null)
