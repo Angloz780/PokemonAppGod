@@ -24,17 +24,6 @@ class AdapterPokemon : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() 
         holder.pokemonBinding.tvPokemon.text = pokemon.nameCapitalized()
         holder.pokemonBinding.vida.max = pokemon.vidaMax
         holder.pokemonBinding.vida.progress = pokemon.vidaActual
-        holder.pokemonBinding.vida.apply {
-            max = pokemon.vidaMax
-            progress = pokemon.vidaActual
-            progressTintList = ColorStateList.valueOf(
-                when{
-                    pokemon.vidaActual < pokemon.vidaMax * 0.15 -> Color.RED
-                    pokemon.vidaActual < pokemon.vidaMax * 0.5 -> Color.YELLOW
-                    else -> Color.GREEN
-                }
-            )
-        }
         Picasso.get().load(pokemon.sprites.frontDefault).into(holder.pokemonBinding.ivPokemon)
         val image1 = pokemon.obtenerImagenTipo1()
         if (image1 != null)
@@ -49,6 +38,18 @@ class AdapterPokemon : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() 
 
         holder.pokemonBinding.root.setOnClickListener {
             PokemonActivity.start(pokemon, holder.pokemonBinding.root.context)
+        }
+
+        holder.pokemonBinding.vida.apply {
+            max = pokemon.vidaMax
+            progress = pokemon.vidaActual
+            progressTintList = ColorStateList.valueOf(
+                when{
+                    pokemon.vidaActual < pokemon.vidaMax * 0.15 -> Color.RED
+                    pokemon.vidaActual < pokemon.vidaMax * 0.5 -> Color.YELLOW
+                    else -> Color.GREEN
+                }
+            )
         }
     }
 

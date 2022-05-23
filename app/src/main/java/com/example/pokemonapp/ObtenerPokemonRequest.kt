@@ -25,12 +25,10 @@ class ObtenerPokemonRequest {
                         pokemon.iniciarVida()
                         listaPokemon.agregar(pokemon)
                     }
-
                 } else
                     println("Algo ha ido mal")
             }
             return listaPokemon
         }
     }
-
 }

@@ -39,15 +39,8 @@ data class Pokemon (
     val stats: List<Stat>,
     val types: List<Type>,
     val weight: Long,
-    var vidaMax: Int = 200,
-    var vidaActual: Int = 100
 ) {
     fun nameCapitalized() = "${name[0].uppercase()}${name.drop(1)}"
-
-    /* Es lo mismo que arriba
-    fun nameCapitalized() : String {
-        return "${name[0].uppercase()}${name.drop(1)}"
-    }*/
 
     companion object {
         fun fromJson(json: String): Pokemon {
@@ -69,10 +62,13 @@ data class Pokemon (
         result+="\n"
         return result
     }
+
+    var vidaMax = 200
+    var vidaActual = vidaMax
     
     fun iniciarVida() {
         vidaMax = (150..200).random()
-        vidaActual = (200..vidaMax).random()
+        vidaActual = (1..vidaMax).random()
     }
 
     fun obtenerImagenTipo1(): Int? {
