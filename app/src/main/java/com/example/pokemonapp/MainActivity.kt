@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun writeInPreferences() {
-         getPreferences(Context.MODE_PRIVATE).edit().apply {
+        getPreferences(Context.MODE_PRIVATE).edit().apply {
             putString(tagListaPokemon, this@MainActivity.listaPokemon.toJson())
             apply()
         }
@@ -86,5 +86,4 @@ class MainActivity : AppCompatActivity() {
             ListaPokemon.fromJson(pokemonsText)
         }
     }
-
 }

@@ -2,6 +2,8 @@ package com.example.pokemonapp
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -29,12 +31,37 @@ class PokemonActivity : AppCompatActivity() {
         val pokemonJson = intent.getStringExtra(POKEMON_TAG)
         if (pokemonJson != null) {
             val pokemon = Pokemon.fromJson(pokemonJson)
-            binding.tvPokemonNombre.text = pokemon.nameCapitalized()
             Picasso.get().load(pokemon.sprites.frontDefault).into(binding.ivPokemon)
-            pokemon.obtenerImagenTipo1()?.let { Picasso.get().load(it).into(binding.ivTipo1) }
-            pokemon.obtenerImagenTipo2()?.let { Picasso.get().load(it).into(binding.ivTipo2) }
-            binding.tvPokemonAltura.text = "${pokemon.height} kg"
-            binding.tvPokemonPeso.text = "${pokemon.weight} cm"
+            pokemon.iniciarVida()
+
+            binding.tvPokemonNombre.text ="Nombre: " +pokemon.nameCapitalized()
+            binding.tvPokemonAltura.text = "Altura: ${pokemon.height} m"
+            binding.tvPokemonPeso.text = "Peso: ${pokemon.weight} kg"
+            binding.vida.max = pokemon.vidaMax
+            binding.vida.progress = pokemon.vidaActual
+
+            binding.vida.apply {
+                max = pokemon.vidaMax
+                progress = pokemon.vidaActual
+                progressTintList = ColorStateList.valueOf(
+                    when{
+                        pokemon.vidaActual < pokemon.vidaMax * 0.15 -> Color.RED
+                        pokemon.vidaActual < pokemon.vidaMax * 0.5 -> Color.YELLOW
+                        else -> Color.GREEN
+                    }
+                )
+            }
+            val image1 = pokemon.obtenerImagenTipo1()
+            if (image1 != null)
+                binding.ivTipo1.setImageResource(image1)
+            else
+                binding.ivTipo1.setImageDrawable(null)
+
+            val image2 = pokemon.obtenerImagenTipo2()
+            if (image2 != null)
+                binding.ivTipo2.setImageResource(image2)
+            else
+                binding.ivTipo2.setImageDrawable(null)
         } else {
             Toast.makeText(this, "No se ha recibido ningún Pokémon", Toast.LENGTH_LONG).show()
             finish()

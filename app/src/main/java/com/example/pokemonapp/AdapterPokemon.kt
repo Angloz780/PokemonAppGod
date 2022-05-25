@@ -22,8 +22,6 @@ class AdapterPokemon : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         val pokemon = pokemons.listaPokemon[position]
         holder.pokemonBinding.tvPokemon.text = pokemon.nameCapitalized()
-        holder.pokemonBinding.vida.max = pokemon.vidaMax
-        holder.pokemonBinding.vida.progress = pokemon.vidaActual
         Picasso.get().load(pokemon.sprites.frontDefault).into(holder.pokemonBinding.ivPokemon)
         val image1 = pokemon.obtenerImagenTipo1()
         if (image1 != null)
@@ -45,9 +43,9 @@ class AdapterPokemon : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() 
             progress = pokemon.vidaActual
             progressTintList = ColorStateList.valueOf(
                 when{
-                    pokemon.vidaActual < pokemon.vidaMax * 0.15 -> Color.RED
-                    pokemon.vidaActual < pokemon.vidaMax * 0.5 -> Color.YELLOW
-                    else -> Color.GREEN
+                    pokemon.vidaActual < pokemon.vidaMax*0.15 -> Color.RED
+                    pokemon.vidaActual < pokemon.vidaMax*0.5 -> Color.YELLOW
+                    else ->Color.GREEN
                 }
             )
         }

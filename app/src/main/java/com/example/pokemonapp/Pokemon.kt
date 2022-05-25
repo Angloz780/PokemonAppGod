@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
 
+
 @Serializable
 data class Pokemon (
     val abilities: List<Ability>,
@@ -38,9 +39,24 @@ data class Pokemon (
     val sprites: Sprites,
     val stats: List<Stat>,
     val types: List<Type>,
-    val weight: Long,
+    val weight: Long
 ) {
+
+    var vidaMax = 200
+    var vidaActual = vidaMax
+
+    fun iniciarVida(){
+
+        vidaMax = (150..250).random()
+        vidaActual = (1..vidaMax).random()
+
+    }
     fun nameCapitalized() = "${name[0].uppercase()}${name.drop(1)}"
+
+    /* Es lo mismo que arriba
+    fun nameCapitalized() : String {
+        return "${name[0].uppercase()}${name.drop(1)}"
+    }*/
 
     companion object {
         fun fromJson(json: String): Pokemon {
@@ -48,6 +64,7 @@ data class Pokemon (
             return gson.fromJson(json, Pokemon::class.java)
         }
     }
+
 
     fun toJson() : String {
         val gson = Gson()
@@ -61,14 +78,6 @@ data class Pokemon (
         }
         result+="\n"
         return result
-    }
-
-    var vidaMax = 200
-    var vidaActual = vidaMax
-    
-    fun iniciarVida() {
-        vidaMax = (150..200).random()
-        vidaActual = (1..vidaMax).random()
     }
 
     fun obtenerImagenTipo1(): Int? {
@@ -104,6 +113,7 @@ data class Pokemon (
             type.contentEquals("unknown") -> R.mipmap.ic_desconocido
 
             else -> R.mipmap.ic_desconocido
+
         }
     }
 }
