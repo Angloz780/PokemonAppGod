@@ -13,7 +13,7 @@ class ObtenerPokemonRequest {
         fun get(): ListaPokemon {
             val listaPokemon = ListaPokemon()
             val client = OkHttpClient()
-            for (i in 1..493) {
+            for (i in 1..898) {
                 val request = Request.Builder()
                     .url("https://pokeapi.co/api/v2/pokemon/${i}")
                     .build()
