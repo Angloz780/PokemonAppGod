@@ -43,8 +43,8 @@ class AdapterPokemon : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() 
             progress = pokemon.vidaActual
             progressTintList = ColorStateList.valueOf(
                 when{
-                    pokemon.vidaActual < pokemon.vidaMax*0.15 -> Color.RED
-                    pokemon.vidaActual < pokemon.vidaMax*0.5 -> Color.YELLOW
+                    pokemon.vidaActual < pokemon.vidaMax * 0.15 -> Color.RED
+                    pokemon.vidaActual < pokemon.vidaMax * 0.5 -> Color.YELLOW
                     else ->Color.GREEN
                 }
             )

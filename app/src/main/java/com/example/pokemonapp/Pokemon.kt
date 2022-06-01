@@ -53,18 +53,12 @@ data class Pokemon (
     }
     fun nameCapitalized() = "${name[0].uppercase()}${name.drop(1)}"
 
-    /* Es lo mismo que arriba
-    fun nameCapitalized() : String {
-        return "${name[0].uppercase()}${name.drop(1)}"
-    }*/
-
     companion object {
         fun fromJson(json: String): Pokemon {
             val gson = Gson()
             return gson.fromJson(json, Pokemon::class.java)
         }
     }
-
 
     fun toJson() : String {
         val gson = Gson()
@@ -113,7 +107,6 @@ data class Pokemon (
             type.contentEquals("unknown") -> R.mipmap.ic_desconocido
 
             else -> R.mipmap.ic_desconocido
-
         }
     }
 }

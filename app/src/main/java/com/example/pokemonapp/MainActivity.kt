@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         binding.rvPokemon.layoutManager = LinearLayoutManager(this)
         binding.rvPokemon.adapter = AdapterPokemon()
 
+        val sharedPreferences = getSharedPreferences("Prefs", Context.MODE_PRIVATE)
+        val text = sharedPreferences.getString("TOKEN", "No había nada")
+
         readFromPreferences()
 
         actualizarAdapter(listaPokemon)
@@ -34,13 +37,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBotonDescarga() {
-        binding.bDescarga.contentDescription = if (listaPokemon.listaPokemon.isNullOrEmpty()) {
+        binding.bDescarga.contentDescription = if (listaPokemon.listaPokemon.isEmpty()) {
             getString(R.string.descargar_pokemons)
         } else {
             getString(R.string.recargar_pokemons)
         }
 
-        if (listaPokemon.listaPokemon.isNullOrEmpty()) {
+        if (listaPokemon.listaPokemon.isEmpty()) {
             binding.bDescarga.setImageResource(R.mipmap.ic_descarga)
         } else {
             binding.bDescarga.setImageResource(R.mipmap.ic_recarga)
