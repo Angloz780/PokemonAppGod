@@ -15,6 +15,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/pokemon" />
     </LinearLayout>
 
     <LinearLayout
@@ -27,10 +33,18 @@
 
         <ImageView
             android:id="@+id/ivPokemon"
-            android:layout_width="165dp"
-            android:layout_height="165dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/pokemon_picture" />
+
+        <ImageView
+            android:id="@+id/ivPokemon2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="130dp"
             tools:src="@tools:sample/avatars"
             android:contentDescription="@string/pokemon_picture" />
 
@@ -48,7 +62,7 @@
                 android:gravity="center_vertical"
                 android:textColor="@color/black"
                 android:textSize="12sp"
-                tools:text="Nombre Pokemon" />
+                tools:text="Nombre Pokemony id " />
 
             <TextView
                 android:id="@+id/tvPokemonAltura"
@@ -59,6 +73,7 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 tools:text="Altura Pokemon" />
+
             <TextView
                 android:id="@+id/tvPokemonPeso"
                 android:layout_width="match_parent"
@@ -110,6 +125,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/pokeball" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

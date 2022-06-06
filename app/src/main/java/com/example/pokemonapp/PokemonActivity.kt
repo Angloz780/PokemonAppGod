@@ -1,5 +1,6 @@
 package com.example.pokemonapp
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -23,6 +24,7 @@ class PokemonActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPokemonBinding
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPokemonBinding.inflate(layoutInflater)
@@ -32,9 +34,10 @@ class PokemonActivity : AppCompatActivity() {
         if (pokemonJson != null) {
             val pokemon = Pokemon.fromJson(pokemonJson)
             Picasso.get().load(pokemon.sprites.frontDefault).into(binding.ivPokemon)
+            Picasso.get().load(pokemon.sprites.backDefault).into(binding.ivPokemon2)
             pokemon.iniciarVida()
 
-            binding.tvPokemonNombre.text ="Nombre: " +pokemon.nameCapitalized()
+            binding.tvPokemonNombre.text ="Id:  ${pokemon.id}, Nombre: ${pokemon.nameCapitalized()}"
             binding.tvPokemonAltura.text = "Altura: ${pokemon.height} m"
             binding.tvPokemonPeso.text = "Peso: ${pokemon.weight} kg"
             binding.vida.max = pokemon.vidaMax
