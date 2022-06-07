@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemonapp.databinding.ItemPokemonBinding
 import com.squareup.picasso.Picasso
 
-class AdapterPokemon : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() {
+class AdapterPokemon(private val callback: MainActivity) : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() {
 
     class PokemonViewHolder(val pokemonBinding: ItemPokemonBinding) : RecyclerView.ViewHolder(pokemonBinding.root)
 
@@ -38,17 +38,24 @@ class AdapterPokemon : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() 
             PokemonActivity.start(pokemon, holder.pokemonBinding.root.context)
         }
 
+        holder.pokemonBinding.root.setOnLongClickListener {
+            callback.pokemonFavoritoSelected(pokemon)
+            true
+        }
+
         holder.pokemonBinding.vida.apply {
             max = pokemon.vidaMax
             progress = pokemon.vidaActual
             progressTintList = ColorStateList.valueOf(
-                when{
+                when {
                     pokemon.vidaActual < pokemon.vidaMax * 0.15 -> Color.RED
                     pokemon.vidaActual < pokemon.vidaMax * 0.5 -> Color.YELLOW
-                    else ->Color.GREEN
+                    else -> Color.GREEN
                 }
             )
         }
+
+
     }
 
     override fun getItemCount(): Int {
@@ -59,4 +66,6 @@ class AdapterPokemon : RecyclerView.Adapter<AdapterPokemon.PokemonViewHolder>() 
         pokemons = listaPokemon
         notifyDataSetChanged()
     }
+
+
 }
