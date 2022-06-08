@@ -97,13 +97,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun loguearUsuario(){
-        lifecycleScope.launch(Dispatchers.Main) {
-            userToken = LoguearUsuarioRequest.get()
-            println(userToken)
-        }
-    }
-
      fun pokemonFavoritoSelected(pokemon: Pokemon) {
         lifecycleScope.launch(Dispatchers.Main) {
             val success = PokemonFavoritoRequest.get(pokemon.id, userToken)

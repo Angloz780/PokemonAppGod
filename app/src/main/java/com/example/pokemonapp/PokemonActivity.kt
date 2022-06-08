@@ -34,7 +34,6 @@ class PokemonActivity : AppCompatActivity() {
         if (pokemonJson != null) {
             val pokemon = Pokemon.fromJson(pokemonJson)
             Picasso.get().load(pokemon.sprites.frontDefault).into(binding.ivPokemon)
-            Picasso.get().load(pokemon.sprites.backDefault).into(binding.ivPokemon2)
             pokemon.iniciarVida()
 
             binding.tvPokemonNombre.text ="Id:  ${pokemon.id}, Nombre: ${pokemon.nameCapitalized()}"

@@ -54,8 +54,6 @@ class AdapterPokemon(private val callback: MainActivity) : RecyclerView.Adapter<
                 }
             )
         }
-
-
     }
 
     override fun getItemCount(): Int {
