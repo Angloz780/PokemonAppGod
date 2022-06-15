@@ -14,10 +14,12 @@ class LoguearUsuarioRequest {
 
         private var gson = Gson()
 
-        suspend fun get(): String = withContext(Dispatchers.IO) {
+         suspend fun get(): String = withContext(Dispatchers.IO) {
+
             var token = ""
             val nombre = Random.nextInt(0, Int.MAX_VALUE).toString()
             val pass = Random.nextInt(0, Int.MAX_VALUE).toString()
+
             val client = OkHttpClient()
             val request = Request.Builder()
                 .url("http://10.0.2.2:8084/crearUsuario/$nombre/$pass")
@@ -36,5 +38,4 @@ class LoguearUsuarioRequest {
             return@withContext token
         }
     }
-
 }

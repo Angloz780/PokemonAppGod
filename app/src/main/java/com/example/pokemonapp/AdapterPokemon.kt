@@ -43,7 +43,7 @@ class AdapterPokemon(private val callback: MainActivity) : RecyclerView.Adapter<
             true
         }
 
-        holder.pokemonBinding.vida.apply {
+        holder.pokemonBinding.pbVida.apply {
             max = pokemon.vidaMax
             progress = pokemon.vidaActual
             progressTintList = ColorStateList.valueOf(
@@ -64,6 +64,4 @@ class AdapterPokemon(private val callback: MainActivity) : RecyclerView.Adapter<
         pokemons = listaPokemon
         notifyDataSetChanged()
     }
-
-
 }

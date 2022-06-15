@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
     private var userToken = ""
 
     private val tagListaPokemon = "TAG_LISTA_POKEMON"
-    private val tagUserToken = "TAG_USER_TOKEN"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,6 +95,7 @@ class MainActivity : AppCompatActivity() {
             ListaPokemon.fromJson(pokemonsText)
         }
     }
+
 
      fun pokemonFavoritoSelected(pokemon: Pokemon) {
         lifecycleScope.launch(Dispatchers.Main) {
